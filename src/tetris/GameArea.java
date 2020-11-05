@@ -209,9 +209,9 @@ public class GameArea extends JPanel
                 {
                     background[0][j] = null; 
                 }
+                linesCleared++;
             }
-            flags = 0; 
-            linesCleared++; 
+            flags = 0;  
         }
         return linesCleared; 
     }
