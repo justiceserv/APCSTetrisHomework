@@ -16,7 +16,7 @@ public class GameArea extends JPanel
     
     public GameArea( JPanel placeholder, int rows )
     {
-        placeholder.setVisible(false);
+//        placeholder.setVisible(false);
         
         this.setBounds      ( placeholder.getBounds() );
         this.setBorder      ( placeholder.getBorder() );
@@ -33,7 +33,7 @@ public class GameArea extends JPanel
     
     private TetrisBlock[] availableBlocks = {new JShape(), new IShape(), new LShape(), new OShape(), new SShape(), new TShape(), new ZShape()}; 
     
-    private void spawnBlock()
+    public void spawnBlock()
     {
         block = availableBlocks[(int)(Math.random() * availableBlocks.length)];
         block.spawn(cols);
@@ -42,7 +42,7 @@ public class GameArea extends JPanel
     {
         return cols; 
     }
-    private void moveBlockToBackground()
+    public void moveBlockToBackground()
     {
         int[][] shape = block.getShape();
         Color color = block.getColor();
@@ -66,9 +66,6 @@ public class GameArea extends JPanel
         /*if the block touches the bottom edge of the game area*/
         if ( block.getY() + block.getHeight() == rows ) 
         { 
-            moveBlockToBackground();
-            clearLines();
-            spawnBlock();
             return false;
         }
         
@@ -87,9 +84,6 @@ public class GameArea extends JPanel
                     
                     if ( background[y][c + block.getX()] != null )
                     {
-                        moveBlockToBackground();
-                        clearLines();
-                        spawnBlock();
                         return false;
                     }
                     break;
@@ -191,8 +185,9 @@ public class GameArea extends JPanel
         while ( moveBlockDown() ){}
     }
     
-    private void clearLines()
+    public int clearLines()
     {
+        int linesCleared = 0; 
         int flags = 0; 
         for(int i = 0; i < rows; i++)
         {
@@ -216,7 +211,9 @@ public class GameArea extends JPanel
                 }
             }
             flags = 0; 
+            linesCleared++; 
         }
+        return linesCleared; 
     }
     
     private void drawBackground(Graphics g)

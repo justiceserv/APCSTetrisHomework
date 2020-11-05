@@ -19,7 +19,7 @@ public class GameForm extends JFrame
         
         ga = new GameArea( placeholderPanel, 15 );
         add( ga );
-        new GameThread(ga).start();
+        new GameThread(ga, this).start();
     }
     
     private void initControls()
@@ -56,7 +56,14 @@ public class GameForm extends JFrame
             }
         });
     }
-
+    public void setScore(int score)
+    {
+        scoreLabel.setText("Score: " + score); 
+    }
+    public void setLevel(int level)
+    {
+        levelLabel.setText("Level: " + level);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,8 +74,8 @@ public class GameForm extends JFrame
     private void initComponents() {
 
         placeholderPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        scoreLabel = new javax.swing.JLabel();
+        levelLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris Game");
@@ -86,9 +93,9 @@ public class GameForm extends JFrame
             .addGap(0, 448, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Score:");
+        scoreLabel.setText("Score:");
 
-        jLabel2.setText("Level:");
+        levelLabel.setText("Level:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,8 +106,8 @@ public class GameForm extends JFrame
                 .addComponent(placeholderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(scoreLabel)
+                    .addComponent(levelLabel))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,9 +118,9 @@ public class GameForm extends JFrame
                     .addComponent(placeholderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
-                        .addComponent(jLabel1)
+                        .addComponent(scoreLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
+                        .addComponent(levelLabel)))
                 .addContainerGap())
         );
 
@@ -156,8 +163,8 @@ public class GameForm extends JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel levelLabel;
     private javax.swing.JPanel placeholderPanel;
+    private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }
