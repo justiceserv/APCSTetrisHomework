@@ -166,35 +166,27 @@ public class GameArea extends JPanel
     
     public void rotateBlock()
     {
-//        block.rotate();
-//        int y = block.getY();
-//        int x = block.getX();
-//        
-//        if(block.getX() < 0) {block.unRotate();}
-//        else if(block.getX() + block.getWidth() >= cols) {block.unRotate();}
-//        else if(block.getY() + block.getHeight() == rows) {block.unRotate();}
-//        else
-//        {
-//            for(int r = 0; r < block.getHeight(); r++)
-//            {
-//                for (int c = 0; c < block.getWidth(); c++)
-//                {
-//                    try
-//                    {
-//                        if (background[ r + y ][ c + x ] != null)
-//                        {
-//                            block.unRotate(); 
-//                            this.repaint();
-//                            break;
-//                        }
-//                    }
-//                    catch (Exception e) {block.unRotate(); this.repaint(); break;}
-//                }
-//            }
-//        }
         block.rotate();
+        
+        int y = block.getY();
+        int x = block.getX();
+        
         if(block.getX() < 0 || block.getX() + block.getWidth() > cols || block.getY() + block.getHeight() >= rows)
             block.unRotate();
+        else
+        {
+            for(int r = 0; r < block.getHeight(); r++)
+            {
+                for (int c = 0; c < block.getWidth(); c++)
+                {
+                    if (y >= 0 && background[ r + y ][ c + x ] != null)
+                    {
+                        block.unRotate(); 
+                        break;
+                    }
+                }
+            }
+        }
         this.repaint();
     }
     

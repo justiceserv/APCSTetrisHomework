@@ -28,7 +28,7 @@ public class GameThread extends Thread
             {
                 try 
                 {
-                    Thread.sleep( 300 );
+                    Thread.sleep( pause );
                 } catch (InterruptedException ex) {}
             }
             //if the block.getY() < 0 => gameOver
