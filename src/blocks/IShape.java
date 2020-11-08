@@ -22,6 +22,21 @@ public class IShape extends TetrisBlock
             moveDown(); 
             moveLeft(); 
         }
-        
+    }
+    
+    @Override
+    public void unRotate()
+    {
+        super.unRotate();
+        if(getWidth() == 1)
+        {
+            moveUp(); 
+            moveRight(); 
+        }
+        else 
+        {
+            moveDown(); 
+            moveLeft(); 
+        }
     }
 }

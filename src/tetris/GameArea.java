@@ -4,6 +4,8 @@ package tetris;
 import blocks.*;
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GameArea extends JPanel
@@ -16,8 +18,7 @@ public class GameArea extends JPanel
     
     public GameArea( JPanel placeholder, int rows )
     {
-//        placeholder.setVisible(false);
-        
+
         this.setBounds      ( placeholder.getBounds() );
         this.setBorder      ( placeholder.getBorder() );
         this.setBackground  ( placeholder.getBackground() );
@@ -55,7 +56,16 @@ public class GameArea extends JPanel
             {
                 if (shape[r][c] == 1)
                 {
-                    background[ r + y ][ c + x ] = color;
+                    try
+                    {
+                        background[ r + y ][ c + x ] = color;
+                    }
+                    catch(Exception e)
+                    {
+                        JFrame frame = new JFrame("InputDiag #1"); 
+                        JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
+                        break;
+                    }
                 }
             }
         }
@@ -64,10 +74,11 @@ public class GameArea extends JPanel
     public boolean moveBlockDown()
     {
         /*if the block touches the bottom edge of the game area*/
-        if ( block.getY() + block.getHeight() == rows ) 
-        { 
-            return false;
-        }
+            if ( block.getY() + block.getHeight() == rows ) 
+            { 
+                return false;
+            }
+        
         
         int[][] shape = block.getShape();
         
@@ -174,9 +185,9 @@ public class GameArea extends JPanel
 //                }
 //            }
 //        }
-        if(block.getX() < 0 || block.getX() + block.getWidth() >= cols || block.getY() + block.getHeight() >= rows)
-            block.unRotate();
         block.rotate();
+        if(block.getX() < 0 || block.getX() + block.getWidth() > cols || block.getY() + block.getHeight() >= rows)
+            block.unRotate();
         this.repaint();
     }
     
