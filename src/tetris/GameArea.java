@@ -16,6 +16,8 @@ public class GameArea extends JPanel
     
     private final Color[][] background;
     
+    private boolean isWorking = true; 
+    
     public GameArea( JPanel placeholder, int rows )
     {
 
@@ -43,6 +45,10 @@ public class GameArea extends JPanel
     {
         return cols; 
     }
+    public boolean getWorking()
+    {
+        return isWorking;
+    }
     public void moveBlockToBackground()
     {
         int[][] shape = block.getShape();
@@ -64,6 +70,7 @@ public class GameArea extends JPanel
                     {
                         JFrame frame = new JFrame("InputDiag #1"); 
                         JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
+                        isWorking = false; 
                         break;
                     }
                 }

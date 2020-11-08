@@ -22,7 +22,7 @@ public class GameThread extends Thread
     @Override
     public void run()
     {
-        while(true)
+        while(ga.getWorking())
         {
             while(ga.moveBlockDown())
             {

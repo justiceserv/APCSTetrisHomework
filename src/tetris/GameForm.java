@@ -55,6 +55,11 @@ public class GameForm extends JFrame
                 ga.dropBlock();
             }
         });
+        if(ga != null && ga.getWorking())
+        {
+            am.clear();
+            im.clear(); 
+        }
     }
     public void setScore(int score)
     {
