@@ -118,6 +118,8 @@ public class GameArea extends JPanel
     
     public void moveBlockRight()
     {
+        //if(block == null) return; 
+        
         /*if the block touches the right edge of the game area*/
         if ( block.getX() + block.getWidth() >= cols ) return;
         
