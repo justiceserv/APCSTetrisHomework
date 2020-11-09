@@ -5,7 +5,8 @@ public class GameThread extends Thread
     private GameArea ga;
     private GameForm gf; 
     
-    private int level = 1, score; 
+    private int level = 1;
+    private static int score; 
     private int scorePerLevel = 2;
     private int pause = 1000; 
     private int speedPerLevel = 100; 
@@ -43,6 +44,10 @@ public class GameThread extends Thread
             
             ga.spawnBlock();
         }
+    }
+    public static int getScore()
+    {
+        return score; 
     }
     private void changeLevel()
     {
