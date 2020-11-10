@@ -10,8 +10,8 @@ import javax.swing.KeyStroke;
 
 public class GameForm extends JFrame 
 {
-    public static GameArea ga;
-    private GameForm gf = this; 
+    private GameArea ga;
+    
     public GameForm() 
     {
         initComponents();
@@ -23,8 +23,7 @@ public class GameForm extends JFrame
     
     public void startGame()
     {
-        Tetris.gt = new GameThread(ga, gf).start();
-        initControls(); 
+        new GameThread(ga, this).start();
     }
     
     private void initControls()
@@ -60,7 +59,7 @@ public class GameForm extends JFrame
                 ga.dropBlock();
             }
         });
-        if(ga != null && !ga.getWorking())
+        if(ga != null && ga.getWorking())
         {
             am.clear();
             im.clear(); 
