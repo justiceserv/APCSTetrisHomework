@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -26,8 +26,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="228" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="quitBtn" min="-2" pref="376" max="-2" attributes="0"/>
                   <Component id="leaderboardBtn" min="-2" pref="376" max="-2" attributes="0"/>
+                  <Component id="quitBtn" min="-2" pref="376" max="-2" attributes="0"/>
                   <Component id="startBtn" min="-2" pref="376" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
@@ -40,9 +40,9 @@
               <EmptySpace pref="312" max="32767" attributes="0"/>
               <Component id="startBtn" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="leaderboardBtn" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="quitBtn" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="leaderboardBtn" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -57,20 +57,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="quitBtn">
+    <Component class="javax.swing.JButton" name="leaderboardBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quit"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leaderboardBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="leaderboardBtn">
+    <Component class="javax.swing.JButton" name="quitBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Leaderboard"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leaderboardBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -25,9 +25,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="mainmenuBtn" min="-2" pref="127" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
               <Component id="placeholderPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -43,7 +41,6 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mainmenuBtn" min="-2" max="-2" attributes="0"/>
                   <Component id="placeholderPanel" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
@@ -52,7 +49,7 @@
                       <Component id="levelLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,14 +86,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Level:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="mainmenuBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Main Menu"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainmenuBtnActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
