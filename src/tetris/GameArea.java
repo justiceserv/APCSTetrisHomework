@@ -69,7 +69,8 @@ public class GameArea extends JPanel
                     catch(Exception e)
                     {
                         JFrame frame = new JFrame("InputDiag #1"); 
-                        JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
+                        String name = JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
+                        Tetris.lf.addPlayer(name, GameThread.getScore());
                         isWorking = false; 
                         break;
                     }

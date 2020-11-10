@@ -19,16 +19,12 @@ public class GameForm extends JFrame
         
         ga = new GameArea( placeholderPanel, 15 );
         add( ga );
-<<<<<<< HEAD
     }
     
     public void startGame()
     {
         Tetris.gt = new GameThread(ga, gf).start();
         initControls(); 
-=======
-        new GameThread(ga, this).start();
->>>>>>> parent of 04c8676... Fin. For today 11/7
     }
     
     private void initControls()
@@ -90,6 +86,7 @@ public class GameForm extends JFrame
         placeholderPanel = new javax.swing.JPanel();
         scoreLabel = new javax.swing.JLabel();
         levelLabel = new javax.swing.JLabel();
+        mainmenuBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris Game");
@@ -111,12 +108,21 @@ public class GameForm extends JFrame
 
         levelLabel.setText("Level:");
 
+        mainmenuBtn.setText("Main Menu");
+        mainmenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainmenuBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addContainerGap()
+                .addComponent(mainmenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(placeholderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,6 +135,7 @@ public class GameForm extends JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainmenuBtn)
                     .addComponent(placeholderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
@@ -140,6 +147,11 @@ public class GameForm extends JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mainmenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuBtnActionPerformed
+        Tetris.mf.setVisible(true);
+        this.setVisible(false); 
+    }//GEN-LAST:event_mainmenuBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +190,7 @@ public class GameForm extends JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel levelLabel;
+    private javax.swing.JButton mainmenuBtn;
     private javax.swing.JPanel placeholderPanel;
     private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
