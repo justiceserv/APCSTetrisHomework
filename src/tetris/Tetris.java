@@ -9,7 +9,6 @@ public class Tetris
     public static void main(String[] args) 
     {
         mf = new MainForm(); 
-        gf = new GameForm(); 
         lf = new LeaderboardForm(); 
         
         mf.setVisible(true);

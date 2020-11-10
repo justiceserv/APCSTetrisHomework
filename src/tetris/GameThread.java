@@ -15,7 +15,8 @@ public class GameThread extends Thread
     {
         this.ga = ga;
         this.gf = gf; 
-        
+        level = 1; 
+        score = 0; 
         gf.setScore(score);
         gf.setLevel(level);
     }
@@ -43,6 +44,8 @@ public class GameThread extends Thread
         }
         if(!ga.getWorking())
         {
+            gf.setScore(0); 
+            gf.setLevel(1);
             this.stop(); 
         }
     }

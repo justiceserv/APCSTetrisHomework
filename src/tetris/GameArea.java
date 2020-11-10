@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class GameArea extends JPanel
 {
+    private boolean what = true; 
     private TetrisBlock block;
 
     private final int rows, cols, cellSize;
@@ -74,11 +75,15 @@ public class GameArea extends JPanel
                     }
                     catch(Exception e)
                     {
-                        JFrame frame = new JFrame("InputDiag #1"); 
-                        String name = JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
-                        Tetris.lf.addPlayer(name, GameThread.getScore());
-                        isWorking = false; 
-                        break;
+                        if(what)
+                        {
+                            JFrame frame = new JFrame("InputDiag #1"); 
+                            String name = JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
+                            Tetris.lf.addPlayer(name, GameThread.getScore());
+                            isWorking = false; 
+                            what = false; 
+                            return;
+                        }
                     }
                 }
             }
@@ -88,12 +93,11 @@ public class GameArea extends JPanel
     public boolean moveBlockDown()
     {
         /*if the block touches the bottom edge of the game area*/
-            if ( block.getY() + block.getHeight() == rows ) 
-            { 
-                return false;
-            }
-        
-        
+        if ( block.getY() + block.getHeight() == rows ) 
+        { 
+            return false;
+        }
+
         int[][] shape = block.getShape();
         
         //if the block touches another block

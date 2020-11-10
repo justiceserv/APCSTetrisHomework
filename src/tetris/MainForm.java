@@ -83,6 +83,7 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
+        Tetris.gf = new GameForm(); 
         Tetris.gf.setVisible(true);
         Tetris.gf.startGame();
         this.setVisible(false);
