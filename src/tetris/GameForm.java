@@ -10,8 +10,10 @@ import javax.swing.KeyStroke;
 
 public class GameForm extends JFrame 
 {
+    private GameForm gf = this; 
     private GameArea ga;
-    
+    public InputMap im;
+    public ActionMap am; 
     public GameForm() 
     {
         initComponents();
@@ -20,7 +22,7 @@ public class GameForm extends JFrame
     
     public void startGame()
     {
-        ga = new GameArea( placeholderPanel, 15 );
+        ga = new GameArea( gf, placeholderPanel, 15 );
         add( ga );
         new GameThread(ga, this).start();
         ga.isWorking = true; 
@@ -29,40 +31,37 @@ public class GameForm extends JFrame
     
     public void initControls()
     {
-        InputMap im = this.getRootPane().getInputMap();
-        ActionMap am = this.getRootPane().getActionMap();
+        im = this.getRootPane().getInputMap();
+        am = this.getRootPane().getActionMap();
 
         im.put( KeyStroke.getKeyStroke("RIGHT"), "right" );
         im.put( KeyStroke.getKeyStroke("LEFT"), "left"   );
         im.put( KeyStroke.getKeyStroke("UP"), "rotate"   );
         im.put( KeyStroke.getKeyStroke("DOWN"), "drop"   );
+        
+        am.put("right", new AbstractAction(){
+            public void actionPerformed(ActionEvent e) {
+                ga.moveBlockRight();
+            }
+        });
 
-        if(ga != null && ga.getWorking())
-        {
-            am.put("right", new AbstractAction(){
-                public void actionPerformed(ActionEvent e) {
-                    ga.moveBlockRight();
-                }
-            });
-        
-            am.put("left", new AbstractAction(){
-                public void actionPerformed(ActionEvent e) {
-                    ga.moveBlockLeft();
-                }
-            });
-        
-            am.put("rotate", new AbstractAction(){
-                public void actionPerformed(ActionEvent e) {
-                    ga.rotateBlock();
-                }
-            });
-        
-            am.put("drop", new AbstractAction(){
-                public void actionPerformed(ActionEvent e) {
-                    ga.dropBlock();
-                }
-            });
-        }
+        am.put("left", new AbstractAction(){
+            public void actionPerformed(ActionEvent e) {
+                ga.moveBlockLeft();
+            }
+        });
+
+        am.put("rotate", new AbstractAction(){
+            public void actionPerformed(ActionEvent e) {
+                ga.rotateBlock();
+            }
+        });
+
+        am.put("drop", new AbstractAction(){
+            public void actionPerformed(ActionEvent e) {
+                ga.dropBlock();
+            }
+        });
     }
     public void setScore(int score)
     {
@@ -71,6 +70,11 @@ public class GameForm extends JFrame
     public void setLevel(int level)
     {
         levelLabel.setText("Level: " + level);
+    }
+    public void noKeyBoard()
+    {
+        am.clear(); 
+        im.clear(); 
     }
     /**
      * This method is called from within the constructor to initialize the form.

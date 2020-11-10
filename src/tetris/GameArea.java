@@ -13,19 +13,20 @@ public class GameArea extends JPanel
     private boolean what = true; 
     private TetrisBlock block;
 
+    private GameForm gf; 
     private final int rows, cols, cellSize;
     
     private final Color[][] background;
     
     public boolean isWorking = true; 
     
-    public GameArea( JPanel placeholder, int rows )
+    public GameArea( GameForm gf, JPanel placeholder, int rows )
     {
 
         this.setBounds      ( placeholder.getBounds() );
         this.setBorder      ( placeholder.getBorder() );
         this.setBackground  ( placeholder.getBackground() );
-        
+        this.gf = gf; 
         this.rows = rows;
         cellSize = this.getBounds().height / rows;
         cols = this.getBounds().width / cellSize;
@@ -82,6 +83,7 @@ public class GameArea extends JPanel
                             Tetris.lf.addPlayer(name, GameThread.getScore());
                             isWorking = false; 
                             what = false; 
+                            gf.noKeyBoard(); 
                             return;
                         }
                     }
