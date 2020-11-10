@@ -20,7 +20,7 @@ public class GameArea extends JPanel
     
     public GameArea( JPanel placeholder, int rows )
     {
-
+        isWorking = true; 
         this.setBounds      ( placeholder.getBounds() );
         this.setBorder      ( placeholder.getBorder() );
         this.setBackground  ( placeholder.getBackground() );
