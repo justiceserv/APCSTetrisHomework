@@ -16,7 +16,7 @@ public class GameArea extends JPanel
     
     private final Color[][] background;
     
-    private boolean isWorking = true; 
+    public boolean isWorking = true; 
     
     public GameArea( JPanel placeholder, int rows )
     {
@@ -30,7 +30,13 @@ public class GameArea extends JPanel
         cols = this.getBounds().width / cellSize;
         
         background = new Color[this.rows][cols];
-        
+        for(int i = 0; i < this.rows; i++)
+        {
+            for(int j = 0; j < cols; j++)
+            {
+                background[i][j] = null; 
+            }
+        }
         spawnBlock();
     }
     

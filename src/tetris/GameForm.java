@@ -16,17 +16,18 @@ public class GameForm extends JFrame
     {
         initComponents();
         initControls();
-        
-        ga = new GameArea( placeholderPanel, 15 );
-        add( ga );
     }
     
     public void startGame()
     {
+        ga = new GameArea( placeholderPanel, 15 );
+        add( ga );
         new GameThread(ga, this).start();
+        ga.isWorking = true; 
+        initControls(); 
     }
     
-    private void initControls()
+    public void initControls()
     {
         InputMap im = this.getRootPane().getInputMap();
         ActionMap am = this.getRootPane().getActionMap();
@@ -35,34 +36,32 @@ public class GameForm extends JFrame
         im.put( KeyStroke.getKeyStroke("LEFT"), "left"   );
         im.put( KeyStroke.getKeyStroke("UP"), "rotate"   );
         im.put( KeyStroke.getKeyStroke("DOWN"), "drop"   );
-        
-        am.put("right", new AbstractAction(){
-            public void actionPerformed(ActionEvent e) {
-                ga.moveBlockRight();
-            }
-        });
-        
-        am.put("left", new AbstractAction(){
-            public void actionPerformed(ActionEvent e) {
-                ga.moveBlockLeft();
-            }
-        });
-        
-        am.put("rotate", new AbstractAction(){
-            public void actionPerformed(ActionEvent e) {
-                ga.rotateBlock();
-            }
-        });
-        
-        am.put("drop", new AbstractAction(){
-            public void actionPerformed(ActionEvent e) {
-                ga.dropBlock();
-            }
-        });
+
         if(ga != null && ga.getWorking())
         {
-            am.clear();
-            im.clear(); 
+            am.put("right", new AbstractAction(){
+                public void actionPerformed(ActionEvent e) {
+                    ga.moveBlockRight();
+                }
+            });
+        
+            am.put("left", new AbstractAction(){
+                public void actionPerformed(ActionEvent e) {
+                    ga.moveBlockLeft();
+                }
+            });
+        
+            am.put("rotate", new AbstractAction(){
+                public void actionPerformed(ActionEvent e) {
+                    ga.rotateBlock();
+                }
+            });
+        
+            am.put("drop", new AbstractAction(){
+                public void actionPerformed(ActionEvent e) {
+                    ga.dropBlock();
+                }
+            });
         }
     }
     public void setScore(int score)
@@ -89,6 +88,7 @@ public class GameForm extends JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris Game");
+        setResizable(false);
 
         placeholderPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -150,6 +150,8 @@ public class GameForm extends JFrame
     private void mainmenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuBtnActionPerformed
         Tetris.mf.setVisible(true);
         this.setVisible(false); 
+        ga.isWorking = true; 
+        initControls(); 
     }//GEN-LAST:event_mainmenuBtnActionPerformed
 
     /**

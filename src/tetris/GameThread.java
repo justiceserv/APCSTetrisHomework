@@ -19,12 +19,12 @@ public class GameThread extends Thread
         gf.setScore(score);
         gf.setLevel(level);
     }
-    
     @Override
     public void run()
     {
         while(ga.getWorking())
         {
+            gf.initControls(); 
             while(ga.moveBlockDown())
             {
                 try 
@@ -32,10 +32,7 @@ public class GameThread extends Thread
                     Thread.sleep( pause );
                 } catch (InterruptedException ex) {}
             }
-            //if the block.getY() < 0 => gameOver
-            //1. display a gameover message using a popup window with a textfield.
-            //2. stop the game thread
-            //3. the arrow keys must stop working
+
             ga.moveBlockToBackground(); 
             score += ga.clearLines(); 
             
@@ -43,6 +40,10 @@ public class GameThread extends Thread
             changeLevel();
             
             ga.spawnBlock();
+        }
+        if(!ga.getWorking())
+        {
+            this.stop(); 
         }
     }
     public static int getScore()

@@ -53,6 +53,11 @@ public class LeaderboardForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         mainBtn.setText("Main Menu");
+        mainBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,6 +85,11 @@ public class LeaderboardForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mainBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainBtnActionPerformed
+        this.setVisible(false);
+        Tetris.mf.setVisible(true); 
+    }//GEN-LAST:event_mainBtnActionPerformed
 
     /**
      * @param args the command line arguments
