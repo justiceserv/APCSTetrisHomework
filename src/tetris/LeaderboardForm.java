@@ -10,8 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -27,6 +32,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         initComponents();
         initTable(); 
         loadData();
+        initTableSorter(); 
     }
     
     private void initTable()
@@ -46,7 +52,13 @@ public class LeaderboardForm extends javax.swing.JFrame {
     
     private void initTableSorter()
     {
+        TableRowSorter<TableModel> sorter = new TableRowSorter<>(tm);
+        ArrayList<SortKey> keys = new ArrayList<>();
+        keys.add(new SortKey(1, SortOrder.DESCENDING)); 
         
+        sorter.setSortKeys(keys); 
+        jTable1.setRowSorter(sorter); 
+        sorter.sort(); 
     }
     
     private void loadData()
@@ -86,7 +98,15 @@ public class LeaderboardForm extends javax.swing.JFrame {
             new String [] {
                 "Player", "Score"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         mainBtn.setText("Main Menu");
