@@ -6,6 +6,11 @@
 
 package tetris;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,11 +20,13 @@ import javax.swing.table.DefaultTableModel;
 public class LeaderboardForm extends javax.swing.JFrame {
     
     private DefaultTableModel tm; 
+    private final String fileName = "leaderboard"; 
     
     public LeaderboardForm()
     {
         initComponents();
         initTable(); 
+        loadData();
     }
     
     private void initTable()
@@ -27,9 +34,39 @@ public class LeaderboardForm extends javax.swing.JFrame {
         tm = (DefaultTableModel)jTable1.getModel(); 
     }
     
+    private void saveData()
+    {
+        try
+        {
+            FileOutputStream fs = new FileOutputStream(fileName); 
+            ObjectOutputStream os = new ObjectOutputStream(fs); 
+            os.writeObject(tm.getDataVector());
+        } catch(Exception e){}
+    }
+    
+    private void initTableSorter()
+    {
+        
+    }
+    
+    private void loadData()
+    {
+        Vector<String> ci = new Vector<>(); 
+        ci.add("Player");
+        ci.add("Score");
+        try
+        {
+            FileInputStream fs = new FileInputStream(fileName); 
+            ObjectInputStream os = new ObjectInputStream(fs); 
+            
+            tm.setDataVector((Vector<Vector>)os.readObject(), ci);
+        } catch(Exception e) {}
+    }
+    
     public void addPlayer(String name, int score)
     {
         tm.addRow(new Object[]{name, score});
+        saveData();
     }
     
     @SuppressWarnings("unchecked")

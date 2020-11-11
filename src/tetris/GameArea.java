@@ -80,10 +80,23 @@ public class GameArea extends JPanel
                         {
                             JFrame frame = new JFrame("InputDiag #1"); 
                             String name = JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
-                            Tetris.lf.addPlayer(name, GameThread.getScore());
-                            isWorking = false; 
-                            what = false; 
-                            gf.noKeyBoard(); 
+                            if(name != null)
+                            {
+                                Tetris.lf.addPlayer(name, GameThread.getScore());
+                                Tetris.gf.setVisible(false);
+                                Tetris.lf.setVisible(true);
+                                isWorking = false; 
+                                what = false; 
+                                gf.noKeyBoard(); 
+                            }
+                            else
+                            {
+                                Tetris.gf.setVisible(false);
+                                Tetris.lf.setVisible(true);
+                                isWorking = false; 
+                                what = false; 
+                                gf.noKeyBoard();
+                            }
                             return;
                         }
                     }
