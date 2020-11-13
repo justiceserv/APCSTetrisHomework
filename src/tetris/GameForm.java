@@ -22,9 +22,10 @@ public class GameForm extends JFrame
     
     public void startGame()
     {
+        Tetris.audio.playTheme();
         ga = new GameArea( gf, placeholderPanel, 15 );
         add( ga );
-        new GameThread(ga, this).start();
+        new GameThread(ga, this).start(); //GamThread.run(); means running in the same thread, so use start() in order to run in seperate thread. 
         ga.isWorking = true; 
         initControls(); 
     }

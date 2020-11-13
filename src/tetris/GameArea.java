@@ -78,6 +78,7 @@ public class GameArea extends JPanel
                     {
                         if(what)
                         {
+                            Tetris.audio.playGameOver();
                             JFrame frame = new JFrame("InputDiag #1"); 
                             String name = JOptionPane.showInputDialog(frame, "The game is OVER! Please input your username.");
                             if(name != null)
@@ -243,6 +244,7 @@ public class GameArea extends JPanel
                         background[j][k] = background[j - 1][k]; 
                     }
                 }
+                Tetris.audio.playClear();
                 for(int j = 0; j < cols; j++)
                 {
                     background[0][j] = null; 
